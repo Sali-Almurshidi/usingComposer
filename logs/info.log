@@ -1,0 +1,8 @@
+[2020-03-02T14:34:51.077815+01:00] logger.INFO: This is a log! ^_^  [] []
+[2020-03-02T14:34:51.078245+01:00] logger.WARNING: This is a log warning! ^_^  [] []
+[2020-03-02T14:34:51.078727+01:00] logger.ERROR: This is a log error! ^_^  [] []
+[2020-03-02T14:34:54.359065+01:00] logger.INFO: This is a log! ^_^  [] []
+[2020-03-02T14:34:54.359320+01:00] logger.WARNING: This is a log warning! ^_^  [] []
+[2020-03-02T14:34:54.359625+01:00] logger.ERROR: This is a log error! ^_^  [] []
+[2020-03-02T15:22:26.374712+01:00] DEBUG.INFO: INFO (200): Interesting events. Examples: User logs in, SQL logs. a [] []
+[2020-03-02T15:47:41.080665+01:00] INFO.INFO: INFO (200): Interesting events. Examples: User logs in, SQL logs. i [] []

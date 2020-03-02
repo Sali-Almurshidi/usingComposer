@@ -1,0 +1,6 @@
+[2020-03-02T14:34:51.078245+01:00] logger.WARNING: This is a log warning! ^_^  [] []
+[2020-03-02T14:34:51.078727+01:00] logger.ERROR: This is a log error! ^_^  [] []
+[2020-03-02T14:34:54.359320+01:00] logger.WARNING: This is a log warning! ^_^  [] []
+[2020-03-02T14:34:54.359625+01:00] logger.ERROR: This is a log error! ^_^  [] []
+[2020-03-02T15:22:20.259356+01:00] DEBUG.WARNING: WARNING (300): Exceptional occurrences that are not errors. Examples: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong a [] []
+[2020-03-02T15:22:28.303478+01:00] DEBUG.WARNING: WARNING (300): Exceptional occurrences that are not errors. Examples: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong a [] []
