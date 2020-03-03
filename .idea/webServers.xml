@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a75fa37e-6993-4018-9ff9-d1bd0a84d173" name="usingcomposer" url="http://usingcomposer.local">
+        <fileTransfer port="0" mountedRoot="$PROJECT_DIR$" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

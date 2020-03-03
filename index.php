@@ -9,58 +9,67 @@ require 'vendor/autoload.php';
 use Monolog\Handler\BrowserConsoleHandler;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-//use Monolog\Handler\FirePHPHandler;
+use Monolog\Handler\NativeMailerHandler;
 
 
 // create a log channel
-
-$logDEBUG = new Logger('DEBUG');
-$logINFO = new Logger('INFO');
-$logWARNING = new Logger('WARNING');
-$logNOTICE = new Logger('NOTICE');
-$logNOTICE = new Logger('NOTICE');
-
-$logDEBUG->pushHandler(new StreamHandler(__DIR__ . '/logs/debug.log', Logger::DEBUG));
-
-$logINFO->pushHandler(new StreamHandler(__DIR__ . '/logs/info.log'));
-$logINFO->pushHandler(new BrowserConsoleHandler());
+$logBlue = new Logger('blue');
+$logYellow = new Logger('yellow');
+$logRed = new Logger('red');
+$logBlack = new Logger('black');
 
 
-$logWARNING->pushHandler(new StreamHandler(__DIR__ . '/logs/warning.log', Logger::WARNING));
+$logBlue->pushHandler(new StreamHandler(__DIR__ . '/logs/blue.log', Logger::DEBUG));
+$logYellow->pushHandler(new StreamHandler(__DIR__ . '/logs/yellow.log', Logger::WARNING));
+$logRed->pushHandler(new StreamHandler(__DIR__ . '/logs/red.log', Logger::ERROR));
+$logBlack->pushHandler(new StreamHandler(__DIR__ . '/logs/blue.log', Logger::EMERGENCY));
 
-$logNOTICE->pushHandler(new StreamHandler(__DIR__ . '/logs/warning.log', Logger::NOTICE));
-
-
-
-//$log->pushHandler(new FirePHPHandler());
-
-/*$log->debug('This is a log debug! ^_^ ');
-$log->info('This is a log! ^_^ ');
-$log->warning('This is a log warning! ^_^ ');
-$log->error('This is a log error! ^_^ ');*/
-
-/*// add records to the log
-$log->warning('Foo');
-$log->error('Bar');*/
-
-if(isset($_GET['DEBUG'])){
-    $x = $_GET['message'];
-    $logDEBUG->debug('DEBUG (100): Detailed debug information' . $x);
+// blue
+if(isset($_GET['DEBUG']) ){
+    $message = $_GET['message'];
+    $logBlue->debug('DEBUG (100): Detailed debug information' . $message);
 }
 
 if(isset($_GET['INFO'])){
-    $x = $_GET['message'];
-    $logINFO->info('INFO (200): Interesting events. Examples: User logs in, SQL logs. ' . $x);
-}
-
-if(isset($_GET['WARNING'])){
-    $x = $_GET['message'];
-    $logWARNING->warning('WARNING (300): Exceptional occurrences that are not errors. Examples: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong ' . $x);
+    $message = $_GET['message'];
+    $logBlue->pushHandler(new BrowserConsoleHandler());
+    $logBlue->info('INFO (200): Interesting events. Examples: User logs in, SQL logs. ' . $message);
 }
 
 if(isset($_GET['NOTICE'])){
-    $x = $_GET['message'];
-    $logINFO->info('NOTICE (250): Normal but significant events.' . $x);
+    $message = $_GET['message'];
+    $logBlue->notice('NOTICE (250): Normal but significant events.' . $message);
+}
+
+//yellow
+if(isset($_GET['WARNING'])){
+    $message = $_GET['message'];
+    $logYellow->warning('WARNING (300): Exceptional occurrences that are not errors. Examples: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong ' . $message);
+}
+
+//red
+if(isset($_GET['ERROR'])){
+    $message = $_GET['message'];
+    $logRed->error('ERROR (400): Runtime errors that do not require immediate action but should typically be logged and monitored.' . $message);
+    $logRed->pushHandler(new NativeMailerHandler('sali@.com' , (string)$_GET['message'] ,'me@me.dev', LOGGER::ERROR));
+
+}
+
+if(isset($_GET['CRITICAL'])){
+    $message = $_GET['message'];
+    $logRed->critical('CRITICAL (500): Critical conditions. Example: Application component unavailable, unexpected exception.' . $message);
+}
+
+if(isset($_GET['ALERT'])){
+    $message = $_GET['message'];
+    $logRed->alert('ALERT (550): Action must be taken immediately. Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.' . $message);
+}
+
+//Black
+if(isset($_GET['EMERGENCY'])){
+    $message = $_GET['message'];
+    $logBlack->pushHandler(new BrowserConsoleHandler());
+    $logBlack->alert('EMERGENCY (600): Emergency: system is unusable.' . $message);
 }
 
 
@@ -93,13 +102,13 @@ if(isset($_GET['NOTICE'])){
         that are not errors. Examples: Use of deprecated APIs, poor use of an API, undesirable things that are not
         necessarily wrong.
     </button>
-    <button type="submit" name="type" value="ERROR" class="btn btn-danger">ERROR (400): Runtime errors that do not
+    <button type="submit" name="ERROR" value="ERROR" class="btn btn-danger">ERROR (400): Runtime errors that do not
         require immediate action but should typically be logged and monitored.
     </button>
-    <button type="submit" name="type" value="CRITICAL" class="btn btn-danger">CRITICAL (500): Critical conditions.
+    <button type="submit" name="CRITICAL" value="CRITICAL" class="btn btn-danger">CRITICAL (500): Critical conditions.
         Example: Application component unavailable, unexpected exception.
     </button>
-    <button type="submit" name="type" value="ALERT" class="btn btn-danger">ALERT (550): Action must be taken
+    <button type="submit" name="ALERT" value="ALERT" class="btn btn-danger">ALERT (550): Action must be taken
         immediately. Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and
         wake you up.
     </button>

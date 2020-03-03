@@ -1,0 +1,6 @@
+[2020-03-02T16:33:21.422461+01:00] blue.DEBUG: DEBUG (100): Detailed debug informationd [] []
+[2020-03-02T16:33:29.093113+01:00] blue.INFO: INFO (200): Interesting events. Examples: User logs in, SQL logs. d [] []
+[2020-03-02T16:33:34.090227+01:00] blue.NOTICE: NOTICE (250): Normal but significant events.dd [] []
+[2020-03-03T08:53:09.999630+01:00] blue.DEBUG: DEBUG (100): Detailed debug informationgd [] []
+[2020-03-03T08:53:12.539730+01:00] blue.DEBUG: DEBUG (100): Detailed debug informationgd [] []
+[2020-03-03T08:53:13.191141+01:00] blue.DEBUG: DEBUG (100): Detailed debug informationgd [] []
